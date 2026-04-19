@@ -35,7 +35,10 @@ export class SpeechService {
       return;
     }
 
-    this.shouldRestart = this.isIOS;
+    // 全OS共通で「1発話→onend→自動再起動」ループに統一する。
+    // Android Chrome の continuous:true モードでは、同一 resultIndex に対して
+    // 「前の final を含んだ、より長い final」が再発火して結果が重複する既知の挙動があるため。
+    this.shouldRestart = true;
     this.initRecognition();
     try {
       this.recognition.start();
@@ -64,7 +67,9 @@ export class SpeechService {
     const rec = new Ctor();
     rec.lang = 'ja-JP';
     rec.interimResults = true;
-    rec.continuous = !this.isIOS;
+    // continuous:false で 1発話ごとに完結させ、onend で即再起動する。
+    // これにより Android Chrome の continuous モード起因の重複バグを回避する。
+    rec.continuous = false;
 
     rec.onresult = (event: any) => {
       for (let i = event.resultIndex; i < event.results.length; i++) {
