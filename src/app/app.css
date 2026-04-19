@@ -75,4 +75,13 @@ footer {
   text-align: center;
   color: #9ca3af;
   font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+footer .build-info {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  color: #9ca3af;
 }

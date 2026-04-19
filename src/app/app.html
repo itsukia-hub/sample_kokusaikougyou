@@ -24,5 +24,9 @@
 
   <footer>
     <small>検出環境: {{ deviceInfo }}</small>
+    <small class="build-info">
+      build: {{ buildInfo.commit }}@{{ buildInfo.branch }}
+      <span>({{ buildTimeDisplay }})</span>
+    </small>
   </footer>
 </main>

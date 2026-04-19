@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { SpeechService, SpeechState } from './services/speech.service';
 import { MicButton } from './components/mic-button/mic-button';
+import { BUILD_INFO } from '../environments/version';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ export class App {
   readonly errorMessage = signal('');
   readonly supported = this.speech.isSupported;
   readonly deviceInfo = this.detectDevice();
+  readonly buildInfo = BUILD_INFO;
 
   constructor() {
     this.speech.finalResult$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((text) => {
@@ -68,6 +70,16 @@ export class App {
 
   get statusIsError(): boolean {
     return !!this.errorMessage();
+  }
+
+  get buildTimeDisplay(): string {
+    const v = this.buildInfo.builtAt;
+    if (!v || v === 'dev') return 'dev';
+    try {
+      return new Date(v).toLocaleString('ja-JP', { hour12: false });
+    } catch {
+      return v;
+    }
   }
 
   private detectDevice(): string {
