@@ -1,0 +1,45 @@
+:host {
+  display: inline-block;
+}
+
+.mic-button {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+  transition: transform 0.1s ease, background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mic-button:hover:not(:disabled):not(.listening) {
+  transform: translateY(-2px);
+  background: #1d4ed8;
+}
+
+.mic-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.mic-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.mic-button.listening {
+  background: #dc2626;
+  animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.55); }
+  70% { box-shadow: 0 0 0 18px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}

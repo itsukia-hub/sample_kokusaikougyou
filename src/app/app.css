@@ -1,0 +1,78 @@
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  box-sizing: border-box;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+header h1 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #111827;
+}
+
+.subtitle {
+  margin: 0;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 0 auto;
+}
+
+.input-area {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.input-area:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.mic-area {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.status {
+  margin: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #374151;
+  min-height: 1.4em;
+  word-break: break-all;
+}
+
+.status.error {
+  color: #dc2626;
+}
+
+footer {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.75rem;
+}

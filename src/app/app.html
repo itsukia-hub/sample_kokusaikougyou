@@ -1,0 +1,28 @@
+<main class="container">
+  <header>
+    <h1>モバイル音声入力デモ</h1>
+    <p class="subtitle">マイクアイコンをタップして話してください</p>
+  </header>
+
+  <section class="card">
+    <textarea
+      class="input-area"
+      rows="6"
+      [value]="textValue()"
+      (input)="onTextInput($event)"
+      placeholder="ここに音声認識の結果が入ります"></textarea>
+
+    <div class="mic-area">
+      <app-mic-button
+        [listening]="state() === 'listening'"
+        [disabled]="!supported"
+        (toggle)="toggleListening()"></app-mic-button>
+    </div>
+
+    <p class="status" [class.error]="statusIsError">{{ statusText }}</p>
+  </section>
+
+  <footer>
+    <small>検出環境: {{ deviceInfo }}</small>
+  </footer>
+</main>
