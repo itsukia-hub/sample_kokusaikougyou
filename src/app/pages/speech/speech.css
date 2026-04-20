@@ -44,16 +44,14 @@ header h1 {
   flex: 1 0 auto;
 }
 
-.input-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
+.input-wrapper {
+  position: relative;
 }
 
 .input-area {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   padding: 12px;
+  padding-right: 52px;
   font-size: 1rem;
   line-height: 1.5;
   border: 1px solid #d1d5db;
@@ -67,6 +65,50 @@ header h1 {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.mic-icon {
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mic-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.mic-icon:hover:not(:disabled):not(.listening) {
+  background: #1d4ed8;
+}
+
+.mic-icon:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.mic-icon.listening {
+  background: #dc2626;
+  animation: mic-pulse 1.4s infinite;
+}
+
+@keyframes mic-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
 }
 
 .status {

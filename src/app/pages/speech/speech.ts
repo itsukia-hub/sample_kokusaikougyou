@@ -2,12 +2,11 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { SpeechService, SpeechState } from '../../services/speech.service';
-import { MicButton } from '../../components/mic-button/mic-button';
 import { BUILD_INFO } from '../../../environments/version';
 
 @Component({
   selector: 'app-speech-page',
-  imports: [FormsModule, MicButton],
+  imports: [FormsModule],
   templateUrl: './speech.html',
   styleUrl: './speech.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
