@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { BUILD_INFO } from '../../../environments/version';
 
 interface FileInfo {
@@ -11,7 +10,7 @@ interface FileInfo {
 
 @Component({
   selector: 'app-camera-page',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './camera.html',
   styleUrl: './camera.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
