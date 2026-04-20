@@ -12,19 +12,34 @@
       </div>
     }
 
+    <div class="notice warning">
+      <strong>アプリ内ブラウザでの注意</strong><br>
+      LINE / X (Twitter) / Facebook などアプリ内ブラウザで開いた場合、capture 属性が無視されライブラリが開きます。
+      通常ブラウザ (Chrome / Safari) で開いてください。
+    </div>
+
+    <div class="notice hint">
+      <strong>フロント / リアの切り替えについて</strong><br>
+      capture 属性はカメラアプリへのヒントとして働きますが、実際に前後を区別するかはカメラアプリ次第です。
+      多くの端末では撮影画面でユーザーが手動で切り替える形になります。
+    </div>
+
     <div class="button-row">
       <label class="file-button primary">
         <span>リアカメラで撮影</span>
+        <small class="hint-code">capture="environment" (ヒント指定)</small>
         <input type="file" accept="image/*" capture="environment" (change)="onFileSelected($event)" hidden>
       </label>
 
       <label class="file-button primary">
         <span>フロントカメラで撮影</span>
+        <small class="hint-code">capture="user" (ヒント指定)</small>
         <input type="file" accept="image/*" capture="user" (change)="onFileSelected($event)" hidden>
       </label>
 
       <label class="file-button secondary">
         <span>ライブラリから選択</span>
+        <small class="hint-code">capture 属性なし</small>
         <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
       </label>
     </div>
@@ -54,11 +69,17 @@
         <p>各ボタンは HTML の <code>&lt;input type="file"&gt;</code> に以下の属性を付けて実現しています:</p>
         <ul>
           <li><code>accept="image/*"</code> — 画像のみを受け取る</li>
-          <li><code>capture="environment"</code> — リアカメラを優先起動</li>
-          <li><code>capture="user"</code> — フロントカメラを優先起動</li>
+          <li><code>capture="environment"</code> — リアカメラを優先起動 (ヒント)</li>
+          <li><code>capture="user"</code> — フロントカメラを優先起動 (ヒント)</li>
           <li>属性なし — 通常のファイル選択</li>
         </ul>
-        <p>iOS Safari / Android Chrome ともにこの属性に対応しており、OSごとに実装を分岐する必要はありません。</p>
+        <p>iOS Safari / Android Chrome ともに capture 属性に対応しており、OS ごとに実装を分岐する必要はありません。</p>
+        <p><strong>既知の挙動差:</strong></p>
+        <ul>
+          <li>capture 属性は「ヒント」であり、カメラアプリが前/後を区別する保証はありません (多くの純正カメラは区別しない)</li>
+          <li>アプリ内ブラウザ (LINE / X / Facebook 等) は capture 属性を無視してライブラリを開くことが多いです</li>
+          <li>確実にフロント/リアを切り替えたい場合は <code>navigator.mediaDevices.getUserMedia()</code> でカスタムカメラ UI を実装する必要があります</li>
+        </ul>
       </div>
     </details>
   </section>
