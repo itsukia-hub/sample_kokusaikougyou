@@ -5,6 +5,12 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# SPAのクライアントサイドルーティング対応: 未知のパスは index.html にフォールバック
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 # index.html は毎回サーバーに確認させる（古いバージョンを配信し続けないため）
 [[headers]]
   for = "/index.html"

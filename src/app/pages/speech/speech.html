@@ -1,4 +1,6 @@
 <main class="container">
+  <a routerLink="/" class="back-link">← サンプル一覧に戻る</a>
+
   <header>
     <h1>モバイル音声入力デモ</h1>
     <p class="subtitle">マイクアイコンをタップして話してください</p>
@@ -25,7 +27,7 @@
   <footer>
     <small>検出環境: {{ deviceInfo }}</small>
     <small class="build-info">
-      build: {{ buildInfo.commit }}@{{ buildInfo.branch }}
+      build: {{ buildInfo.commit }}&#64;{{ buildInfo.branch }}
       <span>({{ buildTimeDisplay }})</span>
     </small>
   </footer>

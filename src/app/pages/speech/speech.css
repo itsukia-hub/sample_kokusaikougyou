@@ -9,6 +9,16 @@
   gap: 24px;
 }
 
+.back-link {
+  font-size: 0.85rem;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
 header h1 {
   margin: 0 0 4px;
   font-size: 1.4rem;

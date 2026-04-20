@@ -1,0 +1,75 @@
+<main class="container">
+  <a routerLink="/" class="back-link">← サンプル一覧に戻る</a>
+
+  <header>
+    <h1>モバイルカメラ起動デモ</h1>
+    <p class="subtitle">HTMLの input capture 属性でカメラを直接起動します</p>
+  </header>
+
+  <section class="card">
+    @if (!isMobile) {
+      <div class="notice">
+        <strong>※ PCブラウザで表示中です。</strong><br>
+        capture属性はモバイル端末でのみ有効です。スマートフォンで開くとカメラが起動します。PCでは通常のファイル選択ダイアログが開きます。
+      </div>
+    }
+
+    <div class="button-row">
+      <label class="file-button primary">
+        <span>リアカメラで撮影</span>
+        <input type="file" accept="image/*" capture="environment" (change)="onFileSelected($event)" hidden>
+      </label>
+
+      <label class="file-button primary">
+        <span>フロントカメラで撮影</span>
+        <input type="file" accept="image/*" capture="user" (change)="onFileSelected($event)" hidden>
+      </label>
+
+      <label class="file-button secondary">
+        <span>ライブラリから選択</span>
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
+      </label>
+    </div>
+
+    @if (previewUrl(); as url) {
+      <div class="preview">
+        <img [src]="url" alt="選択された画像のプレビュー">
+      </div>
+    }
+
+    @if (fileInfo(); as info) {
+      <dl class="file-info">
+        <dt>ファイル名</dt>
+        <dd>{{ info.name }}</dd>
+        <dt>サイズ</dt>
+        <dd>{{ formatBytes(info.size) }}</dd>
+        <dt>MIME type</dt>
+        <dd>{{ info.type || '(不明)' }}</dd>
+        <dt>最終更新</dt>
+        <dd>{{ formatDate(info.lastModified) }}</dd>
+      </dl>
+    }
+
+    <details class="spec-note">
+      <summary>技術仕様メモ</summary>
+      <div class="spec-body">
+        <p>各ボタンは HTML の <code>&lt;input type="file"&gt;</code> に以下の属性を付けて実現しています:</p>
+        <ul>
+          <li><code>accept="image/*"</code> — 画像のみを受け取る</li>
+          <li><code>capture="environment"</code> — リアカメラを優先起動</li>
+          <li><code>capture="user"</code> — フロントカメラを優先起動</li>
+          <li>属性なし — 通常のファイル選択</li>
+        </ul>
+        <p>iOS Safari / Android Chrome ともにこの属性に対応しており、OSごとに実装を分岐する必要はありません。</p>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    <small>検出環境: {{ deviceInfo }}</small>
+    <small class="build-info">
+      build: {{ buildInfo.commit }}&#64;{{ buildInfo.branch }}
+      <span>({{ buildTimeDisplay }})</span>
+    </small>
+  </footer>
+</main>
