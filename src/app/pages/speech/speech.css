@@ -44,8 +44,15 @@ header h1 {
   flex: 1 0 auto;
 }
 
+.input-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
 .input-area {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   padding: 12px;
   font-size: 1rem;
   line-height: 1.5;
@@ -60,12 +67,6 @@ header h1 {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-}
-
-.mic-area {
-  display: flex;
-  justify-content: center;
-  padding: 8px 0;
 }
 
 .status {

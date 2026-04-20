@@ -5,14 +5,14 @@
   </header>
 
   <section class="card">
-    <textarea
-      class="input-area"
-      rows="6"
-      [value]="textValue()"
-      (input)="onTextInput($event)"
-      placeholder="ここに音声認識の結果が入ります"></textarea>
+    <div class="input-row">
+      <textarea
+        class="input-area"
+        rows="4"
+        [value]="textValue()"
+        (input)="onTextInput($event)"
+        placeholder="ここに音声認識の結果が入ります"></textarea>
 
-    <div class="mic-area">
       <app-mic-button
         [listening]="state() === 'listening'"
         [disabled]="!supported"
