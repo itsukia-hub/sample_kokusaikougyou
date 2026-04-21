@@ -19,22 +19,16 @@
     </div>
 
     <div class="notice hint">
-      <strong>フロント / リアの切り替えについて</strong><br>
-      capture 属性はカメラアプリへのヒントとして働きますが、実際に前後を区別するかはカメラアプリ次第です。
-      多くの端末では撮影画面でユーザーが手動で切り替える形になります。
+      <strong>capture 属性はヒントです</strong><br>
+      「カメラで撮影」ボタンは背面カメラ (capture="environment") を優先指定しますが、
+      実際に背面固定になるか前後切り替え可能になるかはカメラアプリ次第です。
     </div>
 
     <div class="button-row">
       <label class="file-button primary">
-        <span>リアカメラで撮影</span>
+        <span>カメラで撮影</span>
         <small class="hint-code">capture="environment" (ヒント指定)</small>
         <input type="file" accept="image/*" capture="environment" (change)="onFileSelected($event)" hidden>
-      </label>
-
-      <label class="file-button primary">
-        <span>フロントカメラで撮影</span>
-        <small class="hint-code">capture="user" (ヒント指定)</small>
-        <input type="file" accept="image/*" capture="user" (change)="onFileSelected($event)" hidden>
       </label>
 
       <label class="file-button secondary">
@@ -69,10 +63,10 @@
         <p>各ボタンは HTML の <code>&lt;input type="file"&gt;</code> に以下の属性を付けて実現しています:</p>
         <ul>
           <li><code>accept="image/*"</code> — 画像のみを受け取る</li>
-          <li><code>capture="environment"</code> — リアカメラを優先起動 (ヒント)</li>
-          <li><code>capture="user"</code> — フロントカメラを優先起動 (ヒント)</li>
-          <li>属性なし — 通常のファイル選択</li>
+          <li><code>capture="environment"</code> — 背面カメラを優先起動 (ヒント指定)</li>
+          <li>属性なし — 通常のファイル選択 (ライブラリから選ぶ)</li>
         </ul>
+        <p>※ 自撮り側 (フロント / capture="user") ボタンは業務ユースケースに不要なため削除しています。</p>
         <p>iOS Safari / Android Chrome ともに capture 属性に対応しており、OS ごとに実装を分岐する必要はありません。</p>
         <p><strong>既知の挙動差:</strong></p>
         <ul>
