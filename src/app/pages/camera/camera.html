@@ -60,20 +60,12 @@
     <details class="spec-note">
       <summary>技術仕様メモ</summary>
       <div class="spec-body">
-        <p>各ボタンは HTML の <code>&lt;input type="file"&gt;</code> に以下の属性を付けて実現しています:</p>
+        <p>HTML 標準の <code>&lt;input type="file"&gt;</code> に属性を付けるだけで実現しています。</p>
         <ul>
-          <li><code>accept="image/*"</code> — 画像のみを受け取る</li>
-          <li><code>capture="environment"</code> — 背面カメラを優先起動 (ヒント指定)</li>
-          <li>属性なし — 通常のファイル選択 (ライブラリから選ぶ)</li>
+          <li><strong>カメラで撮影</strong>: <code>&lt;input type="file" accept="image/*" capture="environment"&gt;</code></li>
+          <li><strong>ライブラリから選択</strong>: <code>&lt;input type="file" accept="image/*"&gt;</code></li>
         </ul>
-        <p>※ 自撮り側 (フロント / capture="user") ボタンは業務ユースケースに不要なため削除しています。</p>
-        <p>iOS Safari / Android Chrome ともに capture 属性に対応しており、OS ごとに実装を分岐する必要はありません。</p>
-        <p><strong>既知の挙動差:</strong></p>
-        <ul>
-          <li>capture 属性は「ヒント」であり、カメラアプリが前/後を区別する保証はありません (多くの純正カメラは区別しない)</li>
-          <li>アプリ内ブラウザ (LINE / X / Facebook 等) は capture 属性を無視してライブラリを開くことが多いです</li>
-          <li>確実にフロント/リアを切り替えたい場合は <code>navigator.mediaDevices.getUserMedia()</code> でカスタムカメラ UI を実装する必要があります</li>
-        </ul>
+        <p>iOS Safari / Android Chrome の両方で同じタグが動作するため、OS ごとの実装分岐は不要です。</p>
       </div>
     </details>
   </section>
